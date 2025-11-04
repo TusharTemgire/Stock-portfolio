@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-dashboard-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Portfolio Dashboard - Fetches live stock data from Yahoo Finance",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": ["portfolio", "stocks", "yahoo-finance", "dashboard"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "node-cache": "^5.1.2",
+    "yahoo-finance2": "^3.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

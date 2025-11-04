@@ -1,0 +1,30 @@
+const portfolioData = [
+  { particulars: 'HDFC Bank', symbol: 'HDFCBANK', purchasePrice: 1490, quantity: 50, exchange: 'NSE', sector: 'Financial' },
+  { particulars: 'Bajaj Finance', symbol: 'BAJFINANCE', purchasePrice: 6466, quantity: 15, exchange: 'NSE', sector: 'Financial' },
+  { particulars: 'ICICI Bank', symbol: '532174', purchasePrice: 780, quantity: 84, exchange: 'BSE', sector: 'Financial' },
+  { particulars: 'Bajaj Housing', symbol: '544252', purchasePrice: 130, quantity: 504, exchange: 'BSE', sector: 'Financial' },
+  { particulars: 'Savani Financials', symbol: '511577', purchasePrice: 24, quantity: 1080, exchange: 'BSE', sector: 'Financial' },
+  { particulars: 'Affle India', symbol: 'AFFLE', purchasePrice: 1151, quantity: 50, exchange: 'NSE', sector: 'Tech' },
+  { particulars: 'LTI Mindtree', symbol: 'LTIM', purchasePrice: 4775, quantity: 16, exchange: 'NSE', sector: 'Tech' },
+  { particulars: 'KPIT Tech', symbol: '542651', purchasePrice: 672, quantity: 61, exchange: 'BSE', sector: 'Tech' },
+  { particulars: 'Tata Tech', symbol: '544028', purchasePrice: 1072, quantity: 63, exchange: 'BSE', sector: 'Tech' },
+  { particulars: 'BLS E-Services', symbol: '544107', purchasePrice: 232, quantity: 191, exchange: 'BSE', sector: 'Tech' },
+  { particulars: 'Tanla', symbol: '532790', purchasePrice: 1134, quantity: 45, exchange: 'BSE', sector: 'Tech' },
+  { particulars: 'Dmart', symbol: 'DMART', purchasePrice: 3777, quantity: 27, exchange: 'NSE', sector: 'Consumer' },
+  { particulars: 'Tata Consumer', symbol: '532540', purchasePrice: 845, quantity: 90, exchange: 'BSE', sector: 'Consumer' },
+  { particulars: 'Pidilite', symbol: '500331', purchasePrice: 2376, quantity: 36, exchange: 'BSE', sector: 'Consumer' },
+  { particulars: 'Tata Power', symbol: '500400', purchasePrice: 224, quantity: 225, exchange: 'BSE', sector: 'Power' },
+  { particulars: 'KPI Green', symbol: '542323', purchasePrice: 875, quantity: 50, exchange: 'BSE', sector: 'Power' },
+  { particulars: 'Suzlon', symbol: '532667', purchasePrice: 44, quantity: 450, exchange: 'BSE', sector: 'Power' },
+  { particulars: 'Gensol', symbol: '542851', purchasePrice: 998, quantity: 45, exchange: 'BSE', sector: 'Power' },
+  { particulars: 'Hariom Pipes', symbol: '543517', purchasePrice: 580, quantity: 60, exchange: 'BSE', sector: 'Pipe' },
+  { particulars: 'Astral', symbol: 'ASTRAL', purchasePrice: 1517, quantity: 56, exchange: 'NSE', sector: 'Pipe' },
+  { particulars: 'Polycab', symbol: '542652', purchasePrice: 2818, quantity: 28, exchange: 'BSE', sector: 'Pipe' },
+  { particulars: 'Clean Science', symbol: '543318', purchasePrice: 1610, quantity: 32, exchange: 'BSE', sector: 'Others' },
+  { particulars: 'Deepak Nitrite', symbol: '506401', purchasePrice: 2248, quantity: 27, exchange: 'BSE', sector: 'Others' },
+  { particulars: 'Fine Organic', symbol: '541557', purchasePrice: 4284, quantity: 16, exchange: 'BSE', sector: 'Others' },
+  { particulars: 'Gravita', symbol: '533282', purchasePrice: 2037, quantity: 8, exchange: 'BSE', sector: 'Others' },
+  { particulars: 'SBI Life', symbol: '540719', purchasePrice: 1197, quantity: 49, exchange: 'BSE', sector: 'Others' }
+];
+
+module.exports = portfolioData;
