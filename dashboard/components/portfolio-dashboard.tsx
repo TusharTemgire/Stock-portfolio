@@ -75,23 +75,59 @@ export default function PortfolioDashboard() {
   const totalPresentValue = portfolio.reduce((sum, s) => sum + s.presentValue, 0);
   const totalGainLoss = totalPresentValue - totalInvestment;
   const totalGainLossPercent = totalInvestment > 0 ? (totalGainLoss / totalInvestment) * 100 : 0;
+if (loading) {
+  return (
+    <div className="min-h-screen bg-[#121212] p-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="sticky top-0 z-20 bg-[#121212]/50 backdrop-blur-sm border-b border-[#242424] pb-2">
+          <Skeleton className="h-8 w-1/3 bg-[#232323] mb-2" />
+          <Skeleton className="h-4 w-1/6 bg-[#232323]" />
+        </div>
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#121212] p-6">
-        <div className="max-w-7xl mx-auto space-y-6">
-          <Skeleton className="h-12 w-full bg-[#232323]" />
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Skeleton className="h-24 w-full bg-[#181818]" />
-            <Skeleton className="h-24 w-full bg-[#181818]" />
-            <Skeleton className="h-24 w-full bg-[#181818]" />
-            <Skeleton className="h-24 w-full bg-[#181818]" />
-          </div>
-          <Skeleton className="h-96 w-full bg-[#181818]" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Skeleton className="h-24 w-full rounded-lg bg-[#181818]" />
+          <Skeleton className="h-24 w-full rounded-lg bg-[#181818]" />
+          <Skeleton className="h-24 w-full rounded-lg bg-[#181818]" />
+          <Skeleton className="h-24 w-full rounded-lg bg-[#181818]" />
+        </div>
+
+        <div className="space-y-4 mt-2">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="border border-[#242424] bg-[#181818] rounded-lg shadow-lg overflow-hidden">
+              <div className="px-6 py-2 border-b border-[#222] bg-[#222] flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Skeleton className="h-5 w-32 bg-[#232323]" />
+                  <Skeleton className="h-4 w-16 bg-blue-900" />
+                </div>
+                <div className="flex items-center gap-6">
+                  <Skeleton className="h-4 w-20 bg-[#232323]" />
+                  <Skeleton className="h-4 w-20 bg-[#232323]" />
+                  <Skeleton className="h-4 w-12 bg-[#232323]" />
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="flex gap-2 mb-2">
+                  {[...Array(11)].map((_, idx) => (
+                    <Skeleton key={idx} className="h-4 w-20 bg-[#232323] rounded" />
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  {[...Array(4)].map((_, idx) => (
+                    <div key={idx} className="flex gap-2">
+                      {[...Array(11)].map((_, colIdx) => (
+                        <Skeleton key={colIdx} className="h-4 w-20 bg-[#181818] rounded" />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (error) {
     return (
