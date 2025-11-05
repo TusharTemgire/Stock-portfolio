@@ -107,7 +107,7 @@ export default function PortfolioDashboard() {
 
   return (
     <div className="min-h-screen bg-[#121212] p-4">
-      <div className="max-w-7xl mx-auto space-y-3">
+      <div className="px-40 mx-auto space-y-3">
         <div className="sticky top-0 z-20 bg-[#121212]/50 backdrop-blur-sm flex items-center justify-between border-b border-[#242424] pb-2">
           <div className="px-5 ">
             <h1 className="text-2xl font-semibold text-white">Portfolio Dashboard</h1>
