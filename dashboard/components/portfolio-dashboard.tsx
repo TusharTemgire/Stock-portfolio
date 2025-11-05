@@ -108,12 +108,12 @@ export default function PortfolioDashboard() {
   return (
     <div className="min-h-screen bg-slate-50 p-4">
       <div className="max-w-7xl mx-auto space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+        <div className="sticky top-0 z-20 bg-slate-50/50 backdrop-blur-sm flex items-center justify-between border-b border-slate-200 pb-2">
           <div>
             <h1 className="text-2xl font-semibold text-slate-900">Portfolio Dashboard</h1>
             {lastUpdate && (
               <p className="text-xs text-slate-500 mt-1">
-                Last updated: {lastUpdate.toLocaleTimeString()}
+          Last updated: {lastUpdate.toLocaleTimeString()}
               </p>
             )}
           </div>
@@ -145,12 +145,16 @@ export default function PortfolioDashboard() {
             </p>
           </Card>
         </div>
-
+                <PortfolioCharts 
+          sectors={sectors} 
+          totalInvestment={totalInvestment}
+          totalPresentValue={totalPresentValue}
+        />
         {sectors.map(sector => (
           <Card key={sector.sector} className="border border-slate-200 bg-white overflow-hidden">
-            <div className="p-4 border-b border-slate-200 bg-slate-100">
+            <div className="px-6 py-1 border-b border-slate-200 bg-slate-100">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wide">{sector.sector}</h2>
                   <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
                     {sector.portfolioPercent.toFixed(2)}% of Portfolio
@@ -209,11 +213,7 @@ export default function PortfolioDashboard() {
             </Table>
           </Card>
         ))}
-                <PortfolioCharts 
-          sectors={sectors} 
-          totalInvestment={totalInvestment}
-          totalPresentValue={totalPresentValue}
-        />
+
       </div>
     </div>
   );
