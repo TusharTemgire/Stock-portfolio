@@ -146,12 +146,6 @@ export default function PortfolioDashboard() {
           </Card>
         </div>
 
-        <PortfolioCharts 
-          sectors={sectors} 
-          totalInvestment={totalInvestment}
-          totalPresentValue={totalPresentValue}
-        />
-
         {sectors.map(sector => (
           <Card key={sector.sector} className="border border-slate-200 bg-white overflow-hidden">
             <div className="p-4 border-b border-slate-200 bg-slate-100">
@@ -215,6 +209,11 @@ export default function PortfolioDashboard() {
             </Table>
           </Card>
         ))}
+                <PortfolioCharts 
+          sectors={sectors} 
+          totalInvestment={totalInvestment}
+          totalPresentValue={totalPresentValue}
+        />
       </div>
     </div>
   );
