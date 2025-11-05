@@ -1,4 +1,4 @@
-# 8byte Portfolio Dashboard
+# Stocks Portfolio Dashboard
 
 A modern portfolio dashboard built with [Next.js](https://nextjs.org), featuring interactive charts, reusable UI components, and responsive design.
 
