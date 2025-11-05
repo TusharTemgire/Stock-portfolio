@@ -78,16 +78,16 @@ export default function PortfolioDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
+      <div className="min-h-screen bg-[#121212] p-6">
         <div className="max-w-7xl mx-auto space-y-6">
-          <Skeleton className="h-12 w-full bg-slate-200" />
+          <Skeleton className="h-12 w-full bg-[#232323]" />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Skeleton className="h-24 w-full bg-slate-200" />
-            <Skeleton className="h-24 w-full bg-slate-200" />
-            <Skeleton className="h-24 w-full bg-slate-200" />
-            <Skeleton className="h-24 w-full bg-slate-200" />
+            <Skeleton className="h-24 w-full bg-[#181818]" />
+            <Skeleton className="h-24 w-full bg-[#181818]" />
+            <Skeleton className="h-24 w-full bg-[#181818]" />
+            <Skeleton className="h-24 w-full bg-[#181818]" />
           </div>
-          <Skeleton className="h-96 w-full bg-slate-200" />
+          <Skeleton className="h-96 w-full bg-[#181818]" />
         </div>
       </div>
     );
@@ -106,105 +106,107 @@ export default function PortfolioDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4">
+    <div className="min-h-screen bg-[#121212] p-4">
       <div className="max-w-7xl mx-auto space-y-3">
-        <div className="sticky top-0 z-20 bg-slate-50/50 backdrop-blur-sm flex items-center justify-between border-b border-slate-200 pb-2">
-          <div>
-            <h1 className="text-2xl font-semibold text-slate-900">Portfolio Dashboard</h1>
+        <div className="sticky top-0 z-20 bg-[#121212]/50 backdrop-blur-sm flex items-center justify-between border-b border-[#242424] pb-2">
+          <div className="px-5 ">
+            <h1 className="text-2xl font-semibold text-white">Portfolio Dashboard</h1>
             {lastUpdate && (
-              <p className="text-xs text-slate-500 mt-1">
-          Last updated: {lastUpdate.toLocaleTimeString()}
+              <p className="text-xs text-slate-400 mt-1">
+                Last updated: {lastUpdate.toLocaleTimeString()}
               </p>
             )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 ">Total Investment</p>
-            <p className="text-xl font-bold text-slate-900">
+          <Card className="px-4 py-3 border border-[#242424] bg-[#181818] shadow-lg">
+            <p className="text-xs font-semibold text-gray-400">Total Investment</p>
+            <p className="text-xl font-bold text-white mt-1">
               {formatCurrency(totalInvestment)}
             </p>
           </Card>
-          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 ">Present Value</p>
-            <p className="text-xl font-bold text-slate-900">
+          <Card className="px-4 py-3 border border-[#242424] bg-[#181818] shadow-lg">
+            <p className="text-xs font-semibold text-gray-400">Present Value</p>
+            <p className="text-xl font-bold text-white mt-1">
               {formatCurrency(totalPresentValue)}
             </p>
           </Card>
-          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 ">Total Gain/Loss</p>
-            <p className={`text-xl font-bold ${totalGainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+          <Card className="px-4 py-3 border border-[#242424] bg-[#181818] shadow-lg">
+            <p className="text-xs font-semibold text-gray-400">Total Gain/Loss</p>
+            <p className={`text-xl font-bold mt-1 ${totalGainLoss >= 0 ? 'text-green-500' : 'text-red-500'}`}>
               {formatCurrency(totalGainLoss)}
             </p>
           </Card>
-          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 ">Return %</p>
-            <p className={`text-xl font-bold ${totalGainLossPercent >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+          <Card className="px-4 py-3 border border-[#242424] bg-[#181818] shadow-lg">
+            <p className="text-xs font-semibold text-gray-400">Return %</p>
+            <p className={`text-xl font-bold mt-1 ${totalGainLossPercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
               {formatPercent(totalGainLossPercent)}
             </p>
           </Card>
         </div>
-                <PortfolioCharts 
-          sectors={sectors} 
+        <PortfolioCharts
+          sectors={sectors}
           totalInvestment={totalInvestment}
           totalPresentValue={totalPresentValue}
         />
         {sectors.map(sector => (
-          <Card key={sector.sector} className="border border-slate-200 bg-white overflow-hidden">
-            <div className="px-6 py-1 border-b border-slate-200 bg-slate-100">
+          <Card key={sector.sector} className="border border-[#242424] bg-[#181818] overflow-hidden shadow-lg">
+            <div className="px-6 py-2 border-b border-[#222] bg-[#222]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wide">{sector.sector}</h2>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                  <h2 className="text-sm font-bold text-white uppercase tracking-wide">{sector.sector}</h2>
+                  <span className="px-2 py-1 bg-blue-900 text-blue-300 text-xs font-semibold rounded">
                     {sector.portfolioPercent.toFixed(2)}% of Portfolio
                   </span>
                 </div>
                 <div className="flex items-center gap-6 text-xs font-medium">
-                  <span className="text-slate-700">
-                    Investment: <span className="font-semibold">{formatCurrency(sector.totalInvestment)}</span>
+                  <span className="text-gray-300">
+                    Investment: <span className="font-semibold text-white">{formatCurrency(sector.totalInvestment)}</span>
                   </span>
-                  <span className="text-slate-700">
-                    Value: <span className="font-semibold">{formatCurrency(sector.totalPresentValue)}</span>
+                  <span className="text-gray-300">
+                    Value: <span className="font-semibold text-white">{formatCurrency(sector.totalPresentValue)}</span>
                   </span>
-                  <span className={`font-bold ${sector.totalGainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                  <span className={`font-bold ${sector.totalGainLoss >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                     {formatPercent(sector.gainLossPercent)}
                   </span>
                 </div>
               </div>
             </div>
-            <Table>
+            <Table className="bg-[#181818] text-white">
               <TableHeader>
-                <TableRow className="hover:bg-transparent bg-slate-50 border-b border-slate-200">
-                  <TableHead className="text-xs font-semibold text-slate-700">Particulars</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Purchase Price</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Qty</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Investment</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Portfolio %</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700">Exchange</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">CMP</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Present Value</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Gain/Loss</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">P/E Ratio</TableHead>
-                  <TableHead className="text-xs font-semibold text-slate-700 text-right">Latest Earnings</TableHead>
+                <TableRow className="bg-[#222] border-b border-[#333]">
+
+                  <TableHead className="text-xs font-semibold text-gray-400">Particulars</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Purchase Price</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Qty</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Investment</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Portfolio %</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400">Exchange</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">CMP</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Present Value</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Gain/Loss</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">P/E Ratio</TableHead>
+                  <TableHead className="text-xs font-semibold text-gray-400 text-right">Latest Earnings</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {sector.stocks.map(stock => (
-                  <TableRow key={`${stock.symbol}_${stock.exchange}`} className="hover:bg-slate-50 border-b border-slate-100">
-                    <TableCell className="text-xs font-medium text-slate-900">{stock.particulars}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">₹{stock.purchasePrice.toFixed(2)}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">{stock.quantity}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">{formatCurrency(stock.investment)}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">{stock.portfolioPercent.toFixed(2)}%</TableCell>
-                    <TableCell className="text-xs text-slate-600">{stock.exchange}</TableCell>
-                    <TableCell className="text-xs font-semibold text-slate-900 text-right">₹{stock.cmp.toFixed(2)}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">{formatCurrency(stock.presentValue)}</TableCell>
-                    <TableCell className={`text-xs font-semibold text-right ${stock.gainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                  <TableRow key={`${stock.symbol}_${stock.exchange}`} className="hover:bg-[#232323] border-b border-[#222]">
+
+                    <TableCell className="text-xs font-medium text-white">{stock.particulars}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">₹{stock.purchasePrice.toFixed(2)}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">{stock.quantity}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">{formatCurrency(stock.investment)}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">{stock.portfolioPercent.toFixed(2)}%</TableCell>
+                    <TableCell className="text-xs text-gray-400">{stock.exchange}</TableCell>
+                    <TableCell className="text-xs font-bold text-white text-right">₹{stock.cmp.toFixed(2)}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">{formatCurrency(stock.presentValue)}</TableCell>
+                    <TableCell className={`text-xs font-bold text-right ${stock.gainLoss >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                       {formatCurrency(stock.gainLoss)} ({formatPercent(stock.gainLossPercent)})
                     </TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">{stock.peRatio ? stock.peRatio.toFixed(2) : 'N/A'}</TableCell>
-                    <TableCell className="text-xs text-slate-700 text-right">
+                    <TableCell className="text-xs text-gray-300 text-right">{stock.peRatio ? stock.peRatio.toFixed(2) : 'N/A'}</TableCell>
+                    <TableCell className="text-xs text-gray-300 text-right">
                       {stock.yearlyEarnings ? formatCurrency(stock.yearlyEarnings) : 'N/A'}
                     </TableCell>
                   </TableRow>
@@ -213,7 +215,6 @@ export default function PortfolioDashboard() {
             </Table>
           </Card>
         ))}
-
       </div>
     </div>
   );
