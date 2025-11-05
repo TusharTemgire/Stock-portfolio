@@ -106,9 +106,9 @@ export default function PortfolioDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+    <div className="min-h-screen bg-slate-50 p-4">
+      <div className="max-w-7xl mx-auto space-y-3">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-2">
           <div>
             <h1 className="text-2xl font-semibold text-slate-900">Portfolio Dashboard</h1>
             {lastUpdate && (
@@ -119,28 +119,28 @@ export default function PortfolioDashboard() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="p-4 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 uppercase tracking-wide">Total Investment</p>
-            <p className="text-xl font-bold text-slate-900 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
+            <p className="text-xs font-medium text-slate-600 ">Total Investment</p>
+            <p className="text-xl font-bold text-slate-900">
               {formatCurrency(totalInvestment)}
             </p>
           </Card>
-          <Card className="p-4 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 uppercase tracking-wide">Present Value</p>
-            <p className="text-xl font-bold text-slate-900 mt-2">
+          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
+            <p className="text-xs font-medium text-slate-600 ">Present Value</p>
+            <p className="text-xl font-bold text-slate-900">
               {formatCurrency(totalPresentValue)}
             </p>
           </Card>
-          <Card className="p-4 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 uppercase tracking-wide">Total Gain/Loss</p>
-            <p className={`text-xl font-bold mt-2 ${totalGainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
+            <p className="text-xs font-medium text-slate-600 ">Total Gain/Loss</p>
+            <p className={`text-xl font-bold ${totalGainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
               {formatCurrency(totalGainLoss)}
             </p>
           </Card>
-          <Card className="p-4 border border-slate-200 bg-white">
-            <p className="text-xs font-medium text-slate-600 uppercase tracking-wide">Return %</p>
-            <p className={`text-xl font-bold mt-2 ${totalGainLossPercent >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+          <Card className="px-4 py-1 pt-2 border border-slate-200 bg-white">
+            <p className="text-xs font-medium text-slate-600 ">Return %</p>
+            <p className={`text-xl font-bold ${totalGainLossPercent >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
               {formatPercent(totalGainLossPercent)}
             </p>
           </Card>

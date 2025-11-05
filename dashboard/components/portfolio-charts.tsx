@@ -77,105 +77,81 @@ export default function PortfolioCharts({ sectors, totalInvestment, totalPresent
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="p-6 border border-slate-200 bg-white">
-        <h3 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">
-          Sector Allocation
-        </h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Pie
-              data={sectorAllocationData}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={(entry: any) => `${entry.name} (${entry.percent.toFixed(1)}%)`}
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {sectorAllocationData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip content={<CustomPieTooltip />} />
-          </PieChart>
-        </ResponsiveContainer>
-      </Card>
+    <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+        <Card className="p-3 border border-slate-200 bg-white">
+          <h3 className="text-sm font-bold text-slate-900  ">
+            Sector Allocation
+          </h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={sectorAllocationData}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={(entry: any) => `${entry.name} (${entry.percent.toFixed(1)}%)`}
+                outerRadius={100}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {sectorAllocationData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip content={<CustomPieTooltip />} />
+            </PieChart>
+          </ResponsiveContainer>
+        </Card>
 
-      <Card className="p-6 border border-slate-200 bg-white">
-        <h3 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">
-          Sector Performance
-        </h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={sectorPerformanceData}>
-            <XAxis 
-              dataKey="name" 
-              tick={{ fontSize: 11 }}
-              angle={-45}
-              textAnchor="end"
-              height={80}
-            />
-            <YAxis tick={{ fontSize: 11 }} />
-            <Tooltip content={<CustomTooltip />} />
-            <Legend wrapperStyle={{ fontSize: '12px' }} />
-            <Bar dataKey="investment" fill="#64748b" name="Investment" />
-            <Bar dataKey="presentValue" fill="#3b82f6" name="Present Value" />
-          </BarChart>
-        </ResponsiveContainer>
-      </Card>
-
-      <Card className="p-6 border border-slate-200 bg-white">
-        <h3 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">
-          Gain/Loss by Sector
-        </h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={sectorPerformanceData}>
-            <XAxis 
-              dataKey="name" 
-              tick={{ fontSize: 11 }}
-              angle={-45}
-              textAnchor="end"
-              height={80}
-            />
-            <YAxis tick={{ fontSize: 11 }} />
-            <Tooltip content={<CustomGainLossTooltip />} />
-            <Legend wrapperStyle={{ fontSize: '12px' }} />
-            <Bar dataKey="gainLoss" name="Gain/Loss">
-              {sectorPerformanceData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.gainLoss >= 0 ? '#10b981' : '#ef4444'} />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </Card>
-
-      <Card className="p-6 border border-slate-200 bg-white">
-        <h3 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">
-          Portfolio Summary
-        </h3>
-        <div className="space-y-4">
-          {sectors.map((sector, index) => (
-            <div key={sector.sector} className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-3 h-3 rounded-sm" 
-                  style={{ backgroundColor: COLORS[index % COLORS.length] }}
-                />
-                <span className="text-xs font-medium text-slate-900">{sector.sector}</span>
-              </div>
-              <div className="flex items-center gap-4 text-xs">
-                <span className="text-slate-600">
-                  {sector.portfolioPercent.toFixed(1)}%
-                </span>
-                <span className={`font-semibold ${sector.totalGainLoss >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-                  {formatCurrency(sector.totalGainLoss)}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
+        <Card className="p-3 border border-slate-200 bg-white">
+          <h3 className="text-sm font-bold text-slate-900 mb-4 ">
+            Sector Performance
+          </h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={sectorPerformanceData}>
+              <XAxis
+                dataKey="name"
+                tick={{ fontSize: 11 }}
+                angle={-45}
+                textAnchor="end"
+                height={50}
+              />
+              <YAxis tick={{ fontSize: 11 }} />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ fontSize: '12px' }} />
+              <Bar dataKey="investment" fill="#64748b" name="Investment" />
+              <Bar dataKey="presentValue" fill="#3b82f6" name="Present Value" />
+            </BarChart>
+          </ResponsiveContainer>
+        </Card>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-1 mt-2 gap-2">
+        <Card className="p-3 border border-slate-200 bg-white">
+          <h3 className="text-sm font-bold text-slate-900 mb-4 ">
+            Gain/Loss by Sector
+          </h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={sectorPerformanceData}>
+              <XAxis
+                dataKey="name"
+                tick={{ fontSize: 11 }}
+                angle={-45}
+                textAnchor="end"
+                height={30}
+              />
+              <YAxis tick={{ fontSize: 11 }} />
+              <Tooltip content={<CustomGainLossTooltip />} />
+              <Legend wrapperStyle={{ fontSize: '12px' }} />
+              <Bar dataKey="gainLoss" name="Gain/Loss">
+                {sectorPerformanceData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.gainLoss >= 0 ? '#10b981' : '#ef4444'} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </Card>
+      </div>
     </div>
   );
 }
