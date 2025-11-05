@@ -9,6 +9,14 @@ async function getYahooStockData(symbol, exchange = 'NSE') {
     const summary = await yahooFinance.quoteSummary(yahooSymbol, {
       modules: ['earnings']
     });
+    // const yearlyEarn = summary.earnings?.financialsChart?.yearly.map(item => {
+    //   return {
+    //     date: item.date,
+    //     earnings: item.earnings
+    //   };
+    // });
+    // console.log(yearlyEarn);
+
 
     const currentYear = new Date().getFullYear();
     let yearlyRevenue = null;

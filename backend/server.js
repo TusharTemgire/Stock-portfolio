@@ -4,18 +4,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const cors = require('cors');
-
+const portfolioRoutes = require('./routes/portfolio.routes');
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-let portfolioRoutes;
-try {
-  portfolioRoutes = require('./routes/portfolio.routes');
-} catch (error) {
-  console.error('Error loading routes:', error);
-  throw error;
-}
-
 
 app.use(cors());
 app.use(express.json());
@@ -35,7 +26,13 @@ app.get('/health', (req, res) => {
   });
 });
 
-
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Backend server is running',
+    timestamp: new Date().toISOString()
+  });
+});
 // API routes
 app.use('/api/portfolio', portfolioRoutes);
 
